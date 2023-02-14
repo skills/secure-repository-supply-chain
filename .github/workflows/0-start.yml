@@ -24,7 +24,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - id: get_step
-        run: echo "::set-output name=current_step::$(cat ./.github/script/STEP)"
+        run: |
+          echo "current_step=$(cat ./.github/script/STEP)" >> $GITHUB_OUTPUT
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
       
