@@ -1,6 +1,23 @@
+<!--
+  <<< Author notes: Header of the course >>>
+  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
+  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
+  Add your open source license, GitHub uses Creative Commons Attribution 4.0 International.
+-->
+
 # Secure your repository's supply chain
 
-<!--step0-->
+<!--
+  <<< Author notes: Start of the course >>>
+  Include start button, a note about Actions minutes,
+  and tell the learner why they should take the course.
+  Each step should be wrapped in <details>/<summary>, with an `id` set.
+  The start <details> should have `open` as well.
+  Do not use quotes on the <details> tag attributes.
+-->
+
+<details id=0 open>
+<summary><h2>Welcome</h2></summary>
 
 GitHub helps you secure your supply chain, from understanding the dependencies in your environment, to knowing about vulnerabilities in those dependencies and patching them.
 
@@ -10,17 +27,17 @@ GitHub helps you secure your supply chain, from understanding the dependencies i
 - **Prerequisites**: None
 - **Timing**: This course is four steps long and can be completed in under an hour
 
-<summary><h2> How to start this course!</h2></summary>
- 
-1. Above these instructions, right-click **Use this template** and open the link in a new tab.
-   ![Use this template](https://user-images.githubusercontent.com/1221423/169618716-fb17528d-f332-4fc5-a11a-eaa23562665e.png)
+## How to start this course
+
+1. Right-click **Start course** and open the link in a new tab.
+   <br />[![start-course](https://user-images.githubusercontent.com/1221423/218596841-0645fe1a-4aaf-4f51-9ab3-8aa2d3fdd487.svg)](https://github.com/skills/secure-repository-supply-chain/generate)
 2. In the new tab, follow the prompts to create a new repository.
    - For owner, choose your personal account or an organization to host the repository.
-   - We recommend creating a public repository—private repositories will use [Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
-   ![Create a new repository](https://user-images.githubusercontent.com/1221423/169618722-406dc508-add4-4074-83f0-c7a7ad87f6f3.png)
+   - We recommend creating a public repository—private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
+   ![Create a new repository](https://user-images.githubusercontent.com/1221423/218594143-e60462b6-9f2a-4fa3-80de-063ac5429aab.png)
 3. After your new repository is created, wait about 20 seconds, then refresh the page. Follow the step-by-step instructions in the new repository's README.
 
-<!--endstep0-->
+</details>
 
 <details id=1>
 <summary><h2>Step 1: Review and add dependencies using dependency graph</h2></summary>
