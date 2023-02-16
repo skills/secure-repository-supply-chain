@@ -1,9 +1,9 @@
 name: Step 4, 4-Add Dependabot version updates
-# This step triggers after TBD-step-4-event-desc
+# This step triggers after push to dependabot.yml
 # This step sets STEP to X
 # This step closes <details id=3> and opens <details X>
 
-# This will run every time we TBD-step-4-event-desc
+# This will run every time we push to dependabot.yml
 # Reference https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 on:
   workflow_dispatch:
@@ -34,8 +34,8 @@ jobs:
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
       
-  on_TBD-step-4-event:
-    name: On TBD-step-4-event
+  on_dependabot_versions:
+    name: On dependabot versions
     needs: get_current_step
 
     # We will only run this action when:
