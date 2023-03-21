@@ -7,6 +7,8 @@
 
 # Secure your repository's supply chain
 
+_Secure your supply chain, understand dependencies in your environment, know about vulnerabilities in those dependencies and patch them._
+
 <!--
   <<< Author notes: Start of the course >>>
   Include start button, a note about Actions minutes,
