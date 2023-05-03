@@ -45,7 +45,10 @@ GitHub helps you secure your supply chain, from understanding the dependencies i
 [![start-course](https://user-images.githubusercontent.com/1221423/235727646-4a590299-ffe5-480d-8cd5-8194ea184546.svg)](https://github.com/new?template_owner=skills&template_name=review-pull-requests&owner=%40me&name=skills-review-pull-requests&description=My+clone+repository&visibility=public)
 
 1. Right-click **Start course** and open the link in a new tab.
-2. In the new tab, follow the prompts to create a new repository. For owner, we recommend your personal account.
+2. In the new tab, most of the prompts will automatically fill in for you.
+   - For owner, choose your personal account or an organization to host the repository.
+   - We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
+   - Scroll down and click the **Create repository** button at the bottom of the form.
 3. After your new repository is created, wait about 20 seconds, then refresh the page. Follow the step-by-step instructions in the new repository's README.
 
 </details>
@@ -65,7 +68,7 @@ GitHub offers a range of features to help you understand the dependencies in you
 - Dependabot updates
   - Dependabot security updates
   - Dependabot version updates
-   
+
 **What is a dependency graph**: The dependency graph is a summary of the manifest and lock files stored in a repository and any dependencies that are submitted for the repository using the dependency submission API (beta). For each repository, it shows:
 
 * Dependencies, the ecosystems and packages it depends on
@@ -112,7 +115,7 @@ Given how many dependencies our repository is using, maintaining them needs to b
 If your code depends on a package that has a security vulnerability, this can cause a range of problems for your project or the people who use it. You should upgrade to a secure version of the package as soon as possible. If your code uses malware, you need to replace the package with a secure alternative.
 
 Let's try this out with our newly added `follow-redirects` dependency!
- 
+
 ### :keyboard: Activity: View security advisories in the GitHub Advisory Database
 
 1. Navigate to the [GitHub Advisory Database](https://github.com/advisories).
@@ -127,7 +130,7 @@ Let's enable Dependabot alerts on our repository!
  ### :keyboard: Activity: Enable Dependabot alerts
 
 1. Navigate to the `Settings` tab.
-1. Click `Code security and analysis`.  
+1. Click `Code security and analysis`.
 1. Click `Enable` Dependabot alerts (**Wait about 60 seconds and then click the `Security` tab at the top of the repository**).
 1. Review each of the four `Dependabot` alerts under the `Vulnerability alerts` section.
 
@@ -137,7 +140,7 @@ Let's see how this would work by using Dependabot to create a pull request for o
 
  ### :keyboard: Activity: Create a pull request based on a Dependabot alert
 
-1. Select the `Prototype Pollution in minimist` alert under the `Dependabot alerts` section and click on the alert. 
+1. Select the `Prototype Pollution in minimist` alert under the `Dependabot alerts` section and click on the alert.
 1. Click the `Create Dependabot security update` button (**This will create a pull request for the fix and could take ~2 minutes**).
 1. Click the `Review security update` button. The pull request will be displayed.
    - You can view the pull request and `Files changed` tab to review the update.
@@ -145,7 +148,7 @@ Let's see how this would work by using Dependabot to create a pull request for o
 1. Click `Confirm merge`.
 
 **Wait about 20 seconds then refresh this page for the next step.**
- 
+
 </details>
 
 <details id=3>
@@ -162,7 +165,7 @@ We manually created the pull request for the `Prototype Pollution in minimist` a
 ### :keyboard: Activity: Enable and trigger Dependabot security updates
 
 1. Navigate to the `Settings` tab, select `Code security and analysis`, and enable the `Dependabot security updates`.
-1. Navigate to the `Pull requests` repository tab and select the newly created pull request titled **Bump axios from 0.21.1 to 0.21.2 in /code/src/AttendeeSite**. 
+1. Navigate to the `Pull requests` repository tab and select the newly created pull request titled **Bump axios from 0.21.1 to 0.21.2 in /code/src/AttendeeSite**.
    - You may need to wait 30-60 seconds.
 1. Click the `Merge pull request` button.
 1. Click `Confirm merge`.
@@ -176,9 +179,9 @@ We manually created the pull request for the `Prototype Pollution in minimist` a
 
 _Nicely done!_ :partying_face:
 
-You now have automated the process for Dependabot to alert and create pull requests to update your dependencies! At this point, you only need to review the pull request and then merge it to stay on top of your security alerts. 
+You now have automated the process for Dependabot to alert and create pull requests to update your dependencies! At this point, you only need to review the pull request and then merge it to stay on top of your security alerts.
 
-The security updates feature helps automate the process to resolve alerts, but what about just keeping up-to-date with version updates? We can have the same automation to update our dependencies for updated versions using the Dependabot version updates feature. 
+The security updates feature helps automate the process to resolve alerts, but what about just keeping up-to-date with version updates? We can have the same automation to update our dependencies for updated versions using the Dependabot version updates feature.
 
 **What are Dependabot version updates?**: In addition to security alerts, Dependabot can also take the effort out of maintaining your dependencies. You can use it to ensure that your repository automatically keeps up with the latest releases of the packages and applications it depends on. Just like security alerts, Dependabot will identify an outdated dependency and create a pull request to update the manifest to the latest version of the dependency.
 
