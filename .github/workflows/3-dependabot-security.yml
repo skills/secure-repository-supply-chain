@@ -30,7 +30,7 @@ jobs:
           echo "current_step=$(cat ./.github/steps/-step.txt)" >> $GITHUB_OUTPUT
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
-      
+
   on_DependabotSecurityUpdates:
     name: On Dependabot Security Updates
     needs: get_current_step
@@ -62,7 +62,7 @@ jobs:
         env:
           FILE: "code/src/AttendeeSite/package.json"
           SEARCH: "0.21.2"
-          
+
       # Verify the PR added the dependabot changes.
       - name: Check package-lock for axios version 0.21.2
         run: |
@@ -71,7 +71,7 @@ jobs:
         env:
           FILE: "code/src/AttendeeSite/package-lock.json"
           SEARCH: "0.21.2"
-          
+
       # In README.md, switch step 3 for step 4.
       - name: Update to step 4
         uses: skills/action-update-step@v2

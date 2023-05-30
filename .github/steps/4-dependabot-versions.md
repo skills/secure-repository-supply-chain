@@ -1,4 +1,3 @@
-
 ## Step 4: Enable and trigger Dependabot version updates
 
 _Nicely done!_ :partying_face:

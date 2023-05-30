@@ -10,8 +10,8 @@ on:
     branches:
       - main
     paths:
-      - '.github/dependabot.yml'
-      
+      - ".github/dependabot.yml"
+
 # Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 permissions:
   # Need `contents: read` to checkout the repository.
@@ -31,7 +31,7 @@ jobs:
           echo "current_step=$(cat ./.github/steps/-step.txt)" >> $GITHUB_OUTPUT
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
-      
+
   on_dependabot_versions:
     name: On dependabot versions
     needs: get_current_step
@@ -63,7 +63,7 @@ jobs:
         env:
           FILE: ".github/dependabot.yml"
           SEARCH: "nuget"
-          
+
       # In README.md, switch step 3 for step X.
       - name: Update to step X
         uses: skills/action-update-step@v2

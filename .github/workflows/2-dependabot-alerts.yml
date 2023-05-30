@@ -30,7 +30,7 @@ jobs:
           echo "current_step=$(cat ./.github/steps/-step.txt)" >> $GITHUB_OUTPUT
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
-      
+
   on_DependabotPrCreated:
     name: On Creation of a PR
     needs: get_current_step
@@ -71,7 +71,7 @@ jobs:
         env:
           FILE: "code/src/AttendeeSite/package-lock.json"
           SEARCH: "1.2.6"
-          
+
       # In README.md, switch step 2 for step 3.
       - name: Update to step 3
         uses: skills/action-update-step@v2

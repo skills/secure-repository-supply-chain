@@ -1,4 +1,3 @@
-
 ## Step 1: Review and add dependencies using dependency graph
 
 _Welcome to "Secure your repository's supply chain"! :wave:_
@@ -16,8 +15,8 @@ GitHub offers a range of features to help you understand the dependencies in you
 
 **What is a dependency graph**: The dependency graph is a summary of the manifest and lock files stored in a repository and any dependencies that are submitted for the repository using the dependency submission API (beta). For each repository, it shows:
 
-* Dependencies, the ecosystems and packages it depends on
-* Dependents, the repositories and packages that depend on it
+- Dependencies, the ecosystems and packages it depends on
+- Dependents, the repositories and packages that depend on it
 
 ### :keyboard: Activity: Verify that dependency graph is enabled
 

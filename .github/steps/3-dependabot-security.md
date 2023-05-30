@@ -1,4 +1,3 @@
-
 ## Step 3: Enable and trigger Dependabot security updates
 
 _Nice work enabling, viewing, and creating Dependabot alerts :sparkles:_

@@ -1,4 +1,3 @@
-
 ## Step 2: Enable and view Dependabot alerts
 
 _Nice work! :tada: You added and viewed a dependency with `dependency graph`!_
@@ -22,7 +21,7 @@ Notice the list of advisories for our dependency! This can look scary but it's a
 
 Let's enable Dependabot alerts on our repository!
 
- ### :keyboard: Activity: Enable Dependabot alerts
+### :keyboard: Activity: Enable Dependabot alerts
 
 1. Navigate to the `Settings` tab.
 1. Click `Code security and analysis`.
@@ -33,7 +32,7 @@ Dependabot has alerted us of four vulnerabilities that need to be updated from t
 
 Let's see how this would work by using Dependabot to create a pull request for one of the alerts!
 
- ### :keyboard: Activity: Create a pull request based on a Dependabot alert
+### :keyboard: Activity: Create a pull request based on a Dependabot alert
 
 1. Select the `Prototype Pollution in minimist` alert under the `Dependabot alerts` section and click on the alert.
 1. Click the `Create Dependabot security update` button (**This will create a pull request for the fix and could take ~2 minutes**).

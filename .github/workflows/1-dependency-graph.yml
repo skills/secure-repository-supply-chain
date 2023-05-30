@@ -30,7 +30,7 @@ jobs:
           echo "current_step=$(cat ./.github/steps/-step.txt)" >> $GITHUB_OUTPUT
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
-      
+
   on_add_dependency:
     name: On Add dependency
     needs: get_current_step
@@ -60,7 +60,7 @@ jobs:
         env:
           FILE: "code/src/AttendeeSite/package-lock.json"
           SEARCH: "1.14.1"
-      
+
       # In README.md, switch step 1 for step 2.
       - name: Update to step 2
         uses: skills/action-update-step@v2
