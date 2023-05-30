@@ -27,7 +27,7 @@ GitHub helps you secure your supply chain, from understanding the dependencies i
 - **What you'll learn**: How to view repository dependencies, view Dependabot alerts, and enable Dependabot security and version updates
 - **What you'll build**: Repository dependencies, Dependabot alerts, pull requests to fix dependencies and version updates
 - **Prerequisites**: None
-- **Timing**: This course  can be completed in under an hour
+- **Timing**: This course can be completed in under an hour
 
 In this course, you will:
 
