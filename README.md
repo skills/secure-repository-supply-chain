@@ -2,7 +2,7 @@
   <<< Author notes: Header of the course >>>
   Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
   In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses Creative Commons Attribution 4.0 International.
+  Add your open source license, GitHub uses MIT license.
 -->
 
 # Secure your repository's supply chain
@@ -10,12 +10,9 @@
 _Secure your supply chain, understand dependencies in your environment, know about vulnerabilities in those dependencies and patch them._
 
 <!--
-  <<< Author notes: Start of the course >>>
+  <<< Author notes: Course start >>>
   Include start button, a note about Actions minutes,
   and tell the learner why they should take the course.
-  Each step should be wrapped in <details>/<summary>, with an `id` set.
-  The start <details> should have `open` as well.
-  Do not use quotes on the <details> tag attributes.
 -->
 
 <details id=0 open>
@@ -27,9 +24,15 @@ GitHub helps you secure your supply chain, from understanding the dependencies i
 - **What you'll learn**: How to view repository dependencies, view Dependabot alerts, and enable Dependabot security and version updates
 - **What you'll build**: Repository dependencies, Dependabot alerts, pull requests to fix dependencies and version updates
 - **Prerequisites**: None
-- **Timing**: This course is four steps long and can be completed in under an hour
+- **Timing**: This course  can be completed in under an hour
 
-## How to start this course
+In this course, you will:
+
+1.
+2.
+3.
+
+### How to start this course
 
 <!-- For start course, run in JavaScript:
 'https://github.com/new?' + new URLSearchParams({
@@ -243,4 +246,4 @@ Here's a recap of all the tasks you've accomplished in your repository:
 
 Get help: [Post in our discussion board](https://github.com/skills/.github/discussions) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
 
-&copy; 2022 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+&copy; 2023 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
