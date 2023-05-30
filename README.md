@@ -15,8 +15,7 @@ _Secure your supply chain, understand dependencies in your environment, know abo
   and tell the learner why they should take the course.
 -->
 
-<details id=0 open>
-<summary><h2>Welcome</h2></summary>
+## Welcome
 
 GitHub helps you secure your supply chain, from understanding the dependencies in your environment, to knowing about vulnerabilities in those dependencies and patching them.
 
@@ -54,10 +53,9 @@ In this course, you will:
    - Scroll down and click the **Create repository** button at the bottom of the form.
 3. After your new repository is created, wait about 20 seconds, then refresh the page. Follow the step-by-step instructions in the new repository's README.
 
-</details>
 
-<details id=1>
-<summary><h2>Step 1: Review and add dependencies using dependency graph</h2></summary>
+
+## Step 1: Review and add dependencies using dependency graph
 
 _Welcome to "Secure your repository's supply chain"! :wave:_
 
@@ -104,10 +102,9 @@ GitHub offers a range of features to help you understand the dependencies in you
    ![Screen Shot 2022-10-17 at 3 37 36 PM](https://user-images.githubusercontent.com/6351798/196288729-734e3319-c5d7-4f35-a19c-676c12f0e27d.png)
 
 **Wait about 20 seconds then refresh this page for the next step**
-</details>
 
-<details id=2>
-<summary><h2>Step 2: Enable and view Dependabot alerts</h2></summary>
+
+## Step 2: Enable and view Dependabot alerts
 
 _Nice work! :tada: You added and viewed a dependency with `dependency graph`!_
 
@@ -152,10 +149,9 @@ Let's see how this would work by using Dependabot to create a pull request for o
 
 **Wait about 20 seconds then refresh this page for the next step.**
 
-</details>
 
-<details id=3>
-<summary><h2>Step 3: Enable and trigger Dependabot security updates</h2></summary>
+
+## Step 3: Enable and trigger Dependabot security updates
 
 _Nice work enabling, viewing, and creating Dependabot alerts :sparkles:_
 
@@ -175,10 +171,9 @@ We manually created the pull request for the `Prototype Pollution in minimist` a
 
 **Wait about 20 seconds then refresh this page for the next step.**
 
-</details>
 
-<details id=4>
-<summary><h2>Step 4: Enable and trigger Dependabot version updates</h2></summary>
+
+## Step 4: Enable and trigger Dependabot version updates
 
 _Nicely done!_ :partying_face:
 
@@ -202,10 +197,9 @@ Let's see how this works!
 **Wait about 20 seconds then refresh this page for the next step.**
 
 
-</details>
 
-<details id=X>
-<summary><h2>Finish</h2></summary>
+
+## Finish
 
 _Congratulations friend, you've completed this course!_
 
@@ -235,7 +229,7 @@ Here's a recap of all the tasks you've accomplished in your repository:
 - [Read the Get started with GitHub docs](https://docs.github.com/en/get-started).
 - To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
 
-</details>
+
 
 <!--
   <<< Author notes: Footer >>>
