@@ -1,4 +1,4 @@
-name: Step 3, 3-Dependabot Secuirty Updates
+name: Step 3, Dependabot Secuirty Updates
 
 # This step triggers after push to main.
 # This workflow updates from step 3 to step 4.
@@ -56,21 +56,17 @@ jobs:
 
       # Verify the PR added the dependabot changes.
       - name: Check package for axios version 0.21.2
-        run: |
-          chmod a+x .github/script/check-file.sh
-          ./.github/script/check-file.sh
-        env:
-          FILE: "code/src/AttendeeSite/package.json"
-          SEARCH: "0.21.2"
+        uses: skills/action-check-file@v1
+        with:
+          file: "code/src/AttendeeSite/package.json"
+          search: "0.21.2"
 
       # Verify the PR added the dependabot changes.
       - name: Check package-lock for axios version 0.21.2
-        run: |
-          chmod a+x .github/script/check-file.sh
-          ./.github/script/check-file.sh
-        env:
-          FILE: "code/src/AttendeeSite/package-lock.json"
-          SEARCH: "0.21.2"
+        uses: skills/action-check-file@v1
+        with:
+          file: "code/src/AttendeeSite/package-lock.json"
+          search: "0.21.2"
 
       # In README.md, switch step 3 for step 4.
       - name: Update to step 4

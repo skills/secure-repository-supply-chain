@@ -1,4 +1,5 @@
-name: Step 4, 4-Add Dependabot version updates
+name: Step 4, Add Dependabot version updates
+
 # This step triggers after push to dependabot.yml.
 # This step updates from step 4 to X.
 
@@ -57,12 +58,10 @@ jobs:
 
       # Verify the learner added the file contents.
       - name: Check workflow contents, jobs
-        run: |
-          chmod a+x .github/script/check-file.sh
-          ./.github/script/check-file.sh
-        env:
-          FILE: ".github/dependabot.yml"
-          SEARCH: "nuget"
+        uses: skills/action-check-file@v1
+        with:
+          file: ".github/dependabot.yml"
+          search: "nuget"
 
       # In README.md, switch step 3 for step X.
       - name: Update to step X
