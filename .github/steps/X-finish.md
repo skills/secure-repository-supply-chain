@@ -8,7 +8,7 @@ Here's a recap of all the tasks you've accomplished in your repository:
 
 - You've learned how to view and use dependency graph.
 - You've learned how to enable and use Dependabot alerts.
-- You've learned how to enable and use Dependabot secuirty updates.
+- You've learned how to enable and use Dependabot security updates.
 - You've learned how to enable and use Dependabot version updates.
 
 ### Additional learning and resources
