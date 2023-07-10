@@ -26,9 +26,9 @@ Let's enable Dependabot alerts on our repository!
 1. Navigate to the `Settings` tab.
 1. Click `Code security and analysis`.
 1. Click `Enable` Dependabot alerts (**Wait about 60 seconds and then click the `Security` tab at the top of the repository**).
-1. Review each of the four `Dependabot` alerts under the `Vulnerability alerts` section.
+1. Review each of the `Dependabot` alerts under the `Vulnerability alerts` section.
 
-Dependabot has alerted us of four vulnerabilities that need to be updated from the dependencies that we are using. Dependabot helps us address these vulnerabilities by creating pull requests for each one as we select and review the alert.
+Dependabot has alerted us of vulnerabilities that need to be updated from the dependencies that we are using. Dependabot helps us address these vulnerabilities by creating pull requests for each one as we select and review the alert.
 
 Let's see how this would work by using Dependabot to create a pull request for one of the alerts!
 
