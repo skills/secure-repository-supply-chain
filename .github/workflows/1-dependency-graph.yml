@@ -53,7 +53,7 @@ jobs:
         uses: actions/checkout@v4
 
       # Verify the learner added the file contents.
-      - name: Check workflow contents, jobs
+      - name: Check package-lock.json
         uses: skills/action-check-file@v1
         with:
           file: "code/src/AttendeeSite/package-lock.json"
