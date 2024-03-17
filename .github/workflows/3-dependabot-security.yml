@@ -59,14 +59,14 @@ jobs:
         uses: skills/action-check-file@v1
         with:
           file: "code/src/AttendeeSite/package.json"
-          search: "1.6.0"
+          search: "0.28.0"
 
       # Verify the PR added the dependabot changes.
       - name: Check package-lock for axios version 1.6.0
         uses: skills/action-check-file@v1
         with:
           file: "code/src/AttendeeSite/package-lock.json"
-          search: "1.6.0"
+          search: "0.28.0"
 
       # In README.md, switch step 3 for step 4.
       - name: Update to step 4
