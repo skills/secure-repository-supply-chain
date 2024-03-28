@@ -11,7 +11,7 @@ We manually created the pull request for the `Prototype Pollution in minimist` a
 ### :keyboard: Activity: Enable and trigger Dependabot security updates
 
 1. Navigate to the `Settings` tab, select `Code security and analysis`, and enable the `Dependabot security updates`.
-1. Navigate to the `Pull requests` repository tab and select the newly created pull request titled **Bump axios from 0.21.1 to 0.21.2 in /code/src/AttendeeSite**.
+1. Navigate to the `Pull requests` repository tab and select the newly created pull request that updates axios from version 0.21.1 to a patched version.
    - You may need to wait 30-60 seconds.
 1. Click the `Merge pull request` button.
 1. Click `Confirm merge`.
