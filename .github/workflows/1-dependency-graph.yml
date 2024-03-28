@@ -57,7 +57,7 @@ jobs:
         uses: skills/action-check-file@v1
         with:
           file: "code/src/AttendeeSite/package-lock.json"
-          search: "1.14.1"
+          search: "1\\.14\\.1"
 
       # In README.md, switch step 1 for step 2.
       - name: Update to step 2
