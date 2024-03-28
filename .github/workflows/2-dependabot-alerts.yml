@@ -59,7 +59,7 @@ jobs:
         uses: skills/action-check-file@v1
         with:
           file: "code/src/AttendeeSite/package.json"
-          search: "\"minimist\":\ \"\\^(?!1\\.2\\.5)(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?\""
+          search: "\"minimist\":\\s*\"\\^(?!1\\.2\\.5)(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?\""
 
       # Verify the PR updated package-lock.json.
       - name: Check package-lock.json for minimist version other than 1.2.5
