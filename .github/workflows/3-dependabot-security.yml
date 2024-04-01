@@ -1,4 +1,4 @@
-name: Step 3, Dependabot Secuirty Updates
+name: Step 3, Dependabot Security Updates
 
 # This step triggers after push to main.
 # This workflow updates from step 3 to step 4.
