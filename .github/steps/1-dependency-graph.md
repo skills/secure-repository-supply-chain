@@ -31,7 +31,7 @@ Dependency graph is enabled by default for all new public repositories. If you'r
 ### :keyboard: Activity 1.2: Add a new dependency and view your dependency graph
 
 1. Navigate to the **Code** tab and locate the `code/src/AttendeeSite` folder.
-1. Add the following content to the `package-lock.json` file after the third to last. Update line 28 from `}` to `},` and insert the remaining lines before the final two brackets `}`.
+1. Add the following content to the `package-lock.json` file after the third to last bracket `}` and before the last two brackets.
    ```
    ,
     "follow-redirects": {
