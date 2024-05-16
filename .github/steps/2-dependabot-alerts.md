@@ -2,7 +2,7 @@
 
 _Nice work! :tada: You added and viewed a dependency using Dependency graph!_
 
-Given how many dependencies our repository uses, maintaining them needs to become an automated task. Keeping our code secure is a top priority, so the first we need to do is set up a way to be notified when a dependency we are using is vulnerable or malware. We can do this by enabling Dependabot alerts.
+Given how many dependencies our repository uses, maintaining them needs to become an automated task. Keeping our code secure is a top priority, so the first thing we need to do is set up a way to be notified when a dependency we are using is vulnerable or malware. We can do this by enabling Dependabot alerts.
 
 **What are Dependabot alerts?**: Dependabot alerts tell you that your code depends on a package that is insecure. These Dependabot alerts reference the [GitHub Advisory Database](https://github.com/advisories), which contains a list of known security vulnerabilities and malware, grouped in two categories: **GitHub reviewed advisories** and **unreviewed advisories**.
 
@@ -30,7 +30,7 @@ Let's enable Dependabot alerts on our repository!
 1. Navigate to the **Security** tab.
 1. Under "Vulnerability alerts" in the side bar, select **Dependabot** to view a list of the Dependabot alerts for the default branch.
 
-Dependabot has alerted us of vulnerabilities in the dependencies that we are using. We can also use Dependabot to help us address these vulnerabilities by creating pull requests to update the dependency to a safe version.
+Dependabot has alerted us to vulnerabilities in the dependencies that we use. We can also use Dependabot to help us address these vulnerabilities by creating pull requests to update the dependency to a safe version.
 
 Let's see how this would work by using Dependabot to create a pull request for one of the alerts!
 
@@ -38,7 +38,7 @@ Let's see how this would work by using Dependabot to create a pull request for o
 
 1. In the list of Dependabot alerts, click the "Prototype Pollution in minimist" to display more information.
 1. Click the **Create Dependabot security update** button to create a pull request to update the dependency. This could take up to 2 minutes.
-1. When the pull request is open, the page is updated to show a **Review security update** button.
+1. When the pull request is open, the alert page is updated to show a **Review security update** button.
 1. Click the **Review security update** button to display the pull request.
    - You can view the pull request and **Files changed** tab to review the update.
 1. Navigate back to the **Conversation** tab and merge the pull request.
