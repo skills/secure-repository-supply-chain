@@ -29,12 +29,12 @@ GitHub helps you secure your supply chain, from understanding the dependencies i
 - **Prerequisites**: None
 - **Timing**: This course can be completed in under an hour
 
-In this course, you will:
+In this course, you will explore:
 
 1. Dependency graph
 2. Dependency alerts
-3. Dependency security
-4. Dependency versions
+3. Dependency security updates
+4. Dependency versions updates
 
 ### How to start this course
 
