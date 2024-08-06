@@ -8,17 +8,11 @@
     "start": "node provisionComposer.js"
   },
   "dependencies": {
-    "@azure/arm-appinsights": "^2.1.0",
-    "@azure/arm-botservice": "^1.0.0",
-    "@azure/arm-resources": "^2.1.0",
-    "@azure/graph": "^5.0.1",
-    "@azure/ms-rest-nodeauth": "^3.0.3",
-    "@types/fs-extra": "^8.1.0",
-    "axios": "^0.21.1",
-    "chalk": "^4.0.0",
-    "fs-extra": "^8.1.0",
-    "minimist": "^1.2.5",
-    "ora": "^4.0.4",
-    "request-promise": "^4.2.5"
+   ,
+  "follow-redirects": {
+   "version": "1.14.1",
+   "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.1.tgz",
+   "integrity": "sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg=="
+ }
   }
 }
