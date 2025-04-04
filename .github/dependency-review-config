@@ -1,0 +1,10 @@
+- name: Dependency Review
+      uses: actions/dependency-review-action@v4
+      with:
+       # ([String]). Representing a path to a configuration file local to the repository or in an external repository.
+       # Possible values: An absolute path to a local file or an external file.
+       config-file: './.github/dependency-review-config.yml'
+
+       # Syntax for an external file: OWNER/REPOSITORY/PATH/FILENAME@BRANCH
+       config-file: 'github/octorepo/.github/dependency-review-config.yml@main'
+
