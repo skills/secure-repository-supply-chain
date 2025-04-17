@@ -10,7 +10,7 @@ We manually created a pull request to fix the "Prototype Pollution in minimist" 
 
 ### :keyboard: Activity 3.1: Enable and trigger Dependabot security updates
 
-1. Navigate to the **Settings** tab and select **Code security and analysis**.
+1. Navigate to the **Settings** tab and select **Code Security**.
 1. Enable Dependabot security updates. You may need to wait 30-60 seconds before you see any new pull requests.
 1. Navigate to the **Pull requests** repository tab and select the newly created pull request that updates axios from version 0.21.1 to a patched version.
 1. Review and merge the pull request.

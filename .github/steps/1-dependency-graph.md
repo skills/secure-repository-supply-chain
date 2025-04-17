@@ -25,7 +25,7 @@ GitHub offers a range of features to help you understand the dependencies in you
 Dependency graph is enabled by default for all new public repositories. If you're working in a public repository, you can go straight to "Activity 1.2: Add a new dependency and view your dependency graph." For private or internal repositories, you'll need to enable Dependency graph.
 
 1. Navigate to the **Settings** tab.
-1. Click **Code security and analysis**.
+1. Click **Code Security**.
 1. **Enable** "Dependency graph."
 
 ### :keyboard: Activity 1.2: Add a new dependency and view your dependency graph

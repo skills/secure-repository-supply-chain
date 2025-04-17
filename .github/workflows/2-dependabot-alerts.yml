@@ -37,6 +37,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: skills/response-templates
+          path: skills-response-templates
       
       - name: Update comment - checking work
         run: |
