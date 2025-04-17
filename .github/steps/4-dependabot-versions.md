@@ -20,8 +20,11 @@ Let's see how this works!
    - Change the `package-ecosystem` to `nuget`.
    - Change the `directory` to `/code/`.
    - Change the `interval` to `weekly`.
-   
+  
+> 🪧 **Note:** You can edit and commit the file on github.com directly or hit the `.` key to open the lightweight editor to edit and commit changes.
+
    The `dependabot.yml` file should now look like this.
+
    ```yaml
    version: 2
    updates:
@@ -34,9 +37,11 @@ Let's see how this works!
        schedule:
          interval: "weekly"
     ```
+  
 1. Commit your changes directly to the `main` branch.
 
 You have now configured Dependabot version updates to run and check for updates as follows:
+
 - Check once a month for updates to GitHub Actions and create pull requests to update any that are out of date.
 - Check once a week for updates to .NET packages and create pull requests to update any that are out of date. By default, this check runs on a Monday, to run the check on a different day, see [schedule.day](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#scheduleday).
 

@@ -26,13 +26,16 @@ Dependency graph is enabled by default for all new public repositories. If you'r
 
 1. Navigate to the **Settings** tab.
 1. Click **Code security and analysis**.
-1. **Enable** "Dependency graph." 
+1. **Enable** "Dependency graph."
 
 ### :keyboard: Activity 1.2: Add a new dependency and view your dependency graph
 
 1. Navigate to the **Code** tab and locate the `code/src/AttendeeSite` folder.
 1. Add the following content to the `package-lock.json` file after the third to last bracket `}` and before the last two brackets.
-   ```
+
+> 🪧 **Note:** You can edit and commit the file on github.com directly or hit the `.` key to open the lightweight editor to edit and commit changes.
+
+   ```json
    ,
     "follow-redirects": {
       "version": "1.14.1",
@@ -40,6 +43,7 @@ Dependency graph is enabled by default for all new public repositories. If you'r
       "integrity": "sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg=="
     }
    ```
+  
 1. Navigate to the **Insights** tab.
 1. Select **Dependency graph** from the side navigation bar.
 1. Review all the dependencies on the **Dependencies** tab.

@@ -1,8 +1,8 @@
-## Finish
+## Review
 
-_Congratulations friend, you've completed this course!_
+_Congratulations, you've completed this exercise and learned a lot securing your supply chain!_
 
-<img src="https://octodex.github.com/images/welcometocat.png" alt=celebrate width=300 align=right>
+<img src="https://octodex.github.com/images/jetpacktocat.png" alt=celebrate width=200 align=right>
 
 Here's a recap of all the tasks you've accomplished in your repository:
 
@@ -22,7 +22,6 @@ Here's a recap of all the tasks you've accomplished in your repository:
 ### What's next?
 
 - Learn more about securing your supply chain by reading: [Securing your supply chain](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-supply-chain-security).
-- [We'd love to hear what you thought of this course](https://github.com/skills/.github/discussions).
-- [Learn another GitHub skill](https://github.com/skills).
+- Check out other security focused [GitHub Skills exercises](https://skills.github.com/#code-security-and-analysis).
 - [Read the Get started with GitHub docs](https://docs.github.com/en/get-started).
 - To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).

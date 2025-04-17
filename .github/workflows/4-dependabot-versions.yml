@@ -1,72 +1,180 @@
-name: Step 4, Add Dependabot version updates
+name: Step 4 # Add Dependabot version updates
 
-# This step triggers after push to dependabot.yml.
-# This step updates from step 4 to X.
-
-# This will run every time we push to dependabot.yml.
-# Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
     paths:
       - ".github/dependabot.yml"
 
-# Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 permissions:
-  # Need `contents: read` to checkout the repository.
-  # Need `contents: write` to update the step metadata.
-  contents: write
+  contents: read
+  actions: write
+  issues: write
+
+env:
+  REVIEW_FILE: ".github/steps/x-review.md"
 
 jobs:
-  # Get the current step to only run the main job when the learner is on the same step.
-  get_current_step:
-    name: Check current step number
+  find_exercise:
+    name: Find Exercise Issue
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.1.0
+
+  check_step_work:
+    name: Check step work
     runs-on: ubuntu-latest
+    needs: [find_exercise]
+    env:
+      ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - id: get_step
+
+      - name: Get response templates
+        uses: actions/checkout@v4
+        with:
+          repository: skills/response-templates
+
+      - name: Update comment - checking work
         run: |
-          echo "current_step=$(cat ./.github/steps/-step.txt)" >> $GITHUB_OUTPUT
-    outputs:
-      current_step: ${{ steps.get_step.outputs.current_step }}
+          gh issue comment "$ISSUE_URL" \
+            --body-file skills-response-templates/step-feedback/checking-work.md \
+            --edit-last
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  on_dependabot_versions:
-    name: On dependabot versions
-    needs: get_current_step
+      # START: Check practical exercise
 
-    # We will only run this action when:
-    # 1. This repository isn't the template repository.
-    # 2. The step is currently 4.
-    # Reference: https://docs.github.com/en/actions/learn-github-actions/contexts
-    # Reference: https://docs.github.com/en/actions/learn-github-actions/expressions
-    if: >-
-      ${{ !github.event.repository.is_template
-          && needs.get_current_step.outputs.current_step == 4 }}
+      # Search for the comment about registration validation
+      - name: Check package-lock.json
+        run: |
+          # File and expected phrase
+          file=".github/dependabot.yml"
+          keyphrase="nuget"
 
-    # We'll run Ubuntu for performance instead of Mac or Windows.
+          # Fail the workflow if the file content is missing
+          if ! grep -q "$keyphrase" "$file"; then
+            message="The $keyphrase is not present in file $file. Please try again."
+            gh issue comment "$ISSUE_URL" \
+              --body "$message" \
+              --edit-last
+            exit 1
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # END: Check practical exercise
+  
+      - name: Build message - step finished
+        id: build-message-step-finish
+        uses: skills/action-text-variables@v1
+        with:
+          template-file: skills-response-templates/step-feedback/step-finished-prepare-next-step.md
+          template-vars: |
+            next_step_number=3
+
+      - name: Create comment - step finished - final review next
+        run: |
+          gh issue comment "$ISSUE_URL" \
+            --body-file skills-response-templates/step-feedback/lesson-review.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  post_review_content:
+    name: Post review content
+    needs: [find_exercise, check_step_work]
     runs-on: ubuntu-latest
+    env:
+      ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
 
     steps:
-      # We'll need to check out the repository so that we can edit the README.
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get response templates
+        uses: actions/checkout@v4
+        with:
+          repository: skills/response-templates
+          path: skills-response-templates
+
+      - name: Create comment - add step content
+        run: |
+          gh issue comment "$ISSUE_URL" \
+            --body-file "$REVIEW_FILE"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  finish_exercise:
+    name: Finish exercise
+    needs: [find_exercise, post_review_content]
+    runs-on: ubuntu-latest
+    env:
+      ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
+
+    steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Let's get all the branches.
+          ref: main
 
-      # Verify the learner added the file contents.
-      - name: Check dependabot.yml
-        uses: skills/action-check-file@v1
+      - name: Get response templates
+        uses: actions/checkout@v4
         with:
-          file: ".github/dependabot.yml"
-          search: "nuget"
+          repository: skills/response-templates
+          path: skills-response-templates
 
-      # In README.md, switch step 3 for step X.
-      - name: Update to step X
-        uses: skills/action-update-step@v2
+      - name: Configure Git user
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+
+      - name: Build message - congratulations
+        id: build-message-congratulations
+        uses: skills/action-text-variables@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          from_step: 4
-          to_step: X
+          template-file: skills-response-templates/readme/congratulations.md
+          template-vars: |
+            login=${{ github.actor }}
+
+      - name: Update README - congratulations
+        run: |
+          # Add "Congratulations" to the start of the README
+          orig_readme=$(cat README.md)
+          new_readme="${{ steps.build-message-congratulations.outputs.updated-text }} $orig_readme"
+
+          # Update file and push
+          echo "$new_readme" > README.md
+          git add README.md
+          git commit --message="Congratulations!🎉"
+          git push
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build message - exercise finished
+        id: build-finish-message
+        uses: skills/action-text-variables@v1
+        with:
+          template-file: skills-response-templates/step-feedback/lesson-finished.md
+          template-vars: |
+            login=${{ github.actor }}
+            repo_full_name=${{ github.repository }}
+
+      - name: Create comment - exercise finished
+        run: |
+          gh issue comment "$ISSUE_URL" \
+            --body "$ISSUE_BODY"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_BODY: ${{ steps.build-finish-message.outputs.updated-text }}
+
+      - name: Close issue
+        run: gh issue close "$ISSUE_URL"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Disable current workflow
+        run: |
+          gh workflow disable "Step 4"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
