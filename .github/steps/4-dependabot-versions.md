@@ -33,10 +33,9 @@ Let's see how this works!
    > 💡 **Tip:** While, you can edit and commit a file directly on github.com, you can also press the perioed key `.` to open a lightweight VS Code editor directly in browser.
 
 1. Commit your changes directly to the `main` branch.
+1. With the configuration file updated, Mona should already be busy checking your work. Give her a moment and keep watch in the comments. You will see her respond with progress info and the next lesson.
 
 You have now configured Dependabot version updates to run and check for updates as follows:
 
 - Check once a month for updates to GitHub Actions and create pull requests to update any that are out of date.
 - Check once a week for updates to .NET packages and create pull requests to update any that are out of date. By default, this check runs on a Monday, to run the check on a different day, see [schedule.day](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#scheduleday).
-
-Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to display the next step.
