@@ -4,7 +4,9 @@ _Nice work! :tada: You added and viewed a dependency using Dependency graph!_
 
 Given how many dependencies our repository uses, maintaining them needs to become an automated task. Keeping our code secure is a top priority, so the first thing we need to do is set up a way to be notified when a dependency we are using is vulnerable or malware. We can do this by enabling Dependabot alerts.
 
-**What are Dependabot alerts?**: Dependabot alerts tell you that your code depends on a package that is insecure. These Dependabot alerts reference the [GitHub Advisory Database](https://github.com/advisories), which contains a list of known security vulnerabilities and malware, grouped in two categories: **GitHub reviewed advisories** and **unreviewed advisories**.
+**What are Dependabot alerts?**
+
+Dependabot alerts tell you that your code depends on a package that is insecure. These Dependabot alerts reference the [GitHub Advisory Database](https://github.com/advisories), which contains a list of known security vulnerabilities and malware, grouped in two categories: **GitHub reviewed advisories** and **unreviewed advisories**.
 
 If your code depends on a package that has a security vulnerability, this can cause a range of problems for your project or the people who use it. You should upgrade to a secure version of the package as soon as possible. If your code uses malware, you need to replace the package with a secure alternative.
 
