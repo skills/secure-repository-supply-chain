@@ -44,5 +44,4 @@ Let's see how this would work by using Dependabot to create a pull request for o
 1. Click the **Review security update** button to display the pull request.
    - You can view the pull request and **Files changed** tab to review the update.
 1. Navigate back to the **Conversation** tab and merge the pull request.
-
-Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to display the next step.
+1. With the pull request merged, Mona should already be busy checking your work. Give her a moment and keep watch in the comments. You will see her respond with progress info and the next lesson.
