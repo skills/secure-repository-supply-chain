@@ -47,5 +47,4 @@ Dependency graph is enabled by default for all new public repositories. If you'r
 1. Review all the dependencies on the **Dependencies** tab.
 1. Search for `follow-redirects` and review the new dependency you just added.
    ![Screen Shot showing the "follow-redirects" dependency.](https://user-images.githubusercontent.com/6351798/196288729-734e3319-c5d7-4f35-a19c-676c12f0e27d.png)
-
-Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to display the next step.
+1. With the new dependency added, Mona should already be busy checking your work. Give her a moment and keep watch in the comments. You will see her respond with progress info and the next lesson.
