@@ -1,7 +1,6 @@
 name: Step 0 # Start Exercise
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
@@ -38,13 +37,9 @@ jobs:
       - name: Get response templates
         uses: actions/checkout@v4
         with:
-          repository: skills/response-templates
-          path: skills-response-templates
-
-      - name: Configure Git user
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
+          repository: skills/exercise-toolkit
+          path: exercise-toolkit
+          ref: v0.3.0
 
       - name: Build comment - add step content
         id: build-comment
@@ -52,7 +47,6 @@ jobs:
         with:
           template-file: ${{ env.STEP_1_FILE }}
           template-vars: |
-            login=${{ github.actor }}
             full_repo_name=${{ github.repository }}
 
       - name: Create comment - add step content
@@ -66,13 +60,12 @@ jobs:
       - name: Create comment - watching for progress
         run: |
           gh issue comment "$ISSUE_URL" \
-            --body-file "skills-response-templates/step-feedback/watching-for-progress.md"
+            --body-file exercise-toolkit/markdown-templates/step-feedback/watching-for-progress.md
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Disable current workflow and enable next one
         run: |
-          # gh workflow enable "Step 0" # Already disabled
           gh workflow enable "Step 1"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
