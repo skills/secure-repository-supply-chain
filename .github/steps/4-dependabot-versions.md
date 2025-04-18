@@ -15,15 +15,7 @@ Let's see how this works!
 1. Navigate to the **Settings** tab and select **Code Security**.
 1. Locate **Dependabot version updates** and click **Configure** to open a new file editor with pre-poplulated contents. The file is called `dependabot.yml`.
 1. Notice that the file is prepopulated to update the GitHub actions in the repository, the `github-actions` package ecosystem.
-1. Copy the lines that define the GitHub actions updates and append them to the file.
-1. Edit your copy of the content:
-   - Change the `package-ecosystem` to `nuget`.
-   - Change the `directory` to `/code/`.
-   - Change the `interval` to `weekly`.
-  
-> 🪧 **Note:** You can edit and commit the file on github.com directly or hit the `.` key to open the lightweight editor to edit and commit changes.
-
-   The `dependabot.yml` file should now look like this.
+1. Edit your `dependabot.yml` configuration file to include another entry. It should look like:
 
    ```yaml
    version: 2
@@ -38,6 +30,8 @@ Let's see how this works!
          interval: "weekly"
    ```
   
+   > 💡 **Tip:** While, you can edit and commit a file directly on github.com, you can also press the perioed key `.` to open a lightweight VS Code editor directly in browser.
+
 1. Commit your changes directly to the `main` branch.
 
 You have now configured Dependabot version updates to run and check for updates as follows:
