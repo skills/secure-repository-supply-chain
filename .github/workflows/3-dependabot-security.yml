@@ -112,18 +112,17 @@ jobs:
         id: build-message-step-finish
         uses: skills/action-text-variables@v1
         with:
-          template-file: skills-response-templates/step-feedback/step-finished-prepare-next-step.md
+          template-file: exercise-toolkit/markdown-templates/step-feedback/step-finished-prepare-next-step.md
           template-vars: |
             next_step_number=3
 
       - name: Update comment - step finished
         run: |
           gh issue comment "$ISSUE_URL" \
-            --body "$ISSUE_BODY" \
+            --body "${{ steps.build-message-step-finish.outputs.updated-text }}" \
             --edit-last
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ISSUE_BODY: ${{ steps.build-message-step-finish.outputs.updated-text }}
 
   post_next_step_content:
     name: Post next step content
