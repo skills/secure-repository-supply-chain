@@ -73,6 +73,8 @@ jobs:
     name: Post review content
     needs: [find_exercise, check_step_work]
     runs-on: ubuntu-latest
+    if: |
+      !github.event.repository.is_template
     env:
       ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
 
@@ -80,16 +82,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Get response templates
-        uses: actions/checkout@v4
-        with:
-          repository: skills/response-templates
-          path: skills-response-templates
-
-      - name: Create comment - add step content
+      - name: Create comment - add review content
         run: |
           gh issue comment "$ISSUE_URL" \
-            --body-file "$REVIEW_FILE"
+            --body-file ${{ env.REVIEW_FILE }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
