@@ -30,22 +30,12 @@ jobs:
       ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Get response templates
         uses: actions/checkout@v4
         with:
-          repository: skills/response-templates
-          path: skills-response-templates
-
-      - name: Update comment - checking work
-        run: |
-          gh issue comment "$ISSUE_URL" \
-            --body-file skills-response-templates/step-feedback/checking-work.md \
-            --edit-last
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repository: skills/exercise-toolkit
+          path: exercise-toolkit
+          ref: v0.3.0
 
       # START: Check practical exercise
 
