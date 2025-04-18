@@ -1,7 +1,5 @@
 ## Step 1: Review and add dependencies using dependency graph
 
-_Welcome to "Secure your repository's supply chain"! :wave:_
-
 **What's the big deal about securing your repository's supply chain?**: With the accelerated use of open source, most projects depend on hundreds of open-source dependencies. This poses a security problem: what if the dependencies you're using are vulnerable? You could be putting your users at risk of a supply chain attack. One of the most important things you can do to protect your supply chain is to patch your vulnerable dependencies and replace any malware.
 
 GitHub offers a range of features to help you understand the dependencies in your environment, know about vulnerabilities in those dependencies, and patch them. The supply chain features on GitHub are:
