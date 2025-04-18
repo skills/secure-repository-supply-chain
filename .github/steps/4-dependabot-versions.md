@@ -30,7 +30,7 @@ Let's see how this works!
          interval: "weekly"
    ```
   
-   > 💡 **Tip:** While, you can edit and commit a file directly on github.com, you can also press the perioed key `.` to open a lightweight VS Code editor directly in browser.
+   > 💡 **Tip:** While, you can edit and commit a file directly on github.com, you can also press the period key `.` to open a lightweight VS Code editor directly in browser.
 
 1. Commit your changes directly to the `main` branch.
 1. With the configuration file updated, Mona should already be busy checking your work. Give her a moment and keep watch in the comments. You will see her respond with progress info and the next lesson.
