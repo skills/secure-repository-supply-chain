@@ -24,7 +24,7 @@ jobs:
 
       - name: Disable all workflows
         run: |
-          workflows=$(git ls-files | grep -E '\.yml$|\.yaml$')
+          workflows=$(git ls-files .github/workflows | grep -E '\.yml$|\.yaml$')
           for workflow in $workflows; do
             workflow_name=$(basename $workflow)
             gh workflow disable "$workflow_name" || true
