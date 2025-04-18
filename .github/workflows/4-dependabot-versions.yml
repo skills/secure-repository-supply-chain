@@ -50,7 +50,7 @@ jobs:
 
           # Fail the workflow if the file content is missing
           if ! grep -q "$keyphrase" "$file"; then
-            message="The $keyphrase is not present in file $file. Please try again."
+            message="$keyphrase is not present in file $file. Please try again."
             gh issue comment "$ISSUE_URL" \
               --body "$message" \
               --edit-last
