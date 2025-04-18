@@ -7,9 +7,9 @@ on:
       - main
 
 permissions:
-  contents: write
-  actions: write
-  issues: write
+  contents: write # Update Readme
+  actions: write # Disable/enable workflows
+  issues: write # Create issue and comment on issues
 
 env:
   STEP_1_FILE: ".github/steps/1-dependency-graph.md"
