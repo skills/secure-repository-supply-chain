@@ -17,5 +17,4 @@ We manually created a pull request to fix the "Prototype Pollution in minimist" 
 1. Navigate to the **Pull requests** repository tab to view the what Dependabot has found.
 1. Find the new pull request that requestst to patch the **axios** dependency.
 1. Review and merge the pull request.
-
-Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update this page to display the next step.
+1. With the pull request merged, Mona should already be busy checking your work. Give her a moment and keep watch in the comments. You will see her respond with progress info and the next lesson.
