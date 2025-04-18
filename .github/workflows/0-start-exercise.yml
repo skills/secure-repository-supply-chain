@@ -18,6 +18,20 @@ jobs:
     name: Disable workflows
     runs-on: ubuntu-latest
 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Disable all workflows
+        run: |
+          workflows=$(git ls-files | grep -E '\.yml$|\.yaml$')
+          for workflow in $workflows; do
+            workflow_name=$(basename $workflow)
+            gh workflow disable "$workflow_name" || true
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   start_exercise:
     if: |
       !github.event.repository.is_template
