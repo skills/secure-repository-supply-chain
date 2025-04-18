@@ -32,6 +32,9 @@ jobs:
       ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Get response templates
         uses: actions/checkout@v4
         with:
