@@ -14,6 +14,8 @@ permissions:
 
 env:
   REVIEW_FILE: ".github/steps/x-review.md"
+  DEPENDABOT_FILE: ".github/dependabot.yml"
+  DEPENDABOT_KEYPHRASE: "nuget"
 
 jobs:
   find_exercise:
@@ -40,11 +42,11 @@ jobs:
       # START: Check practical exercise
 
       # Search for the comment about registration validation
-      - name: Check package-lock.json
+      - name: Check .github/dependabot.yml
         run: |
           # File and expected phrase
-          file=".github/dependabot.yml"
-          keyphrase="nuget"
+          file="$DEPENDABOT_FILE"
+          keyphrase="$DEPENDABOT_KEYPHRASE"
 
           # Fail the workflow if the file content is missing
           if ! grep -q "$keyphrase" "$file"; then

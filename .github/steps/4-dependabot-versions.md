@@ -36,7 +36,7 @@ Let's see how this works!
        directory: "/code/"
        schedule:
          interval: "weekly"
-    ```
+   ```
   
 1. Commit your changes directly to the `main` branch.
 
