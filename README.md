@@ -36,18 +36,9 @@ In this course, you will explore:
 3. Dependency security updates
 4. Dependency versions updates
 
-### How to start this course
+### How to start this exercise
 
-<!-- For start course, run in JavaScript:
-'https://github.com/new?' + new URLSearchParams({
-  template_owner: 'skills',
-  template_name: 'review-pull-requests',
-  owner: '@me',
-  name: 'skills-review-pull-requests',
-  description: 'My clone repository',
-  visibility: 'public',
-}).toString()
--->
+Simply copy the exercise to your account, then give your favorite Octocat (Mona) about 20 seconds to prepare the first lesson, then refresh the page.
 
 [![](https://img.shields.io/badge/Copy%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=arilivigni&template_name=secure-repository-supply-chain&owner=%40me&name=skills-secure-repository-supply-chain&description=Exercise:+Secure+your+Repository+Supply+Chain&visibility=public)
 
