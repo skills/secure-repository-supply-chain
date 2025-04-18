@@ -14,6 +14,10 @@ env:
   STEP_1_FILE: ".github/steps/1-dependency-graph.md"
 
 jobs:
+  disable_workflows:
+    name: Disable workflows
+    runs-on: ubuntu-latest
+
   start_exercise:
     if: |
       !github.event.repository.is_template
