@@ -2,8 +2,7 @@
 
 _Congratulations, you've completed this exercise and learned a lot securing your supply chain!_
 
-<img src="https://octodex.github.com/images/jetpacktocat.png" alt=celebrate width=200 align=right>
-
+<img src="https://octodex.github.com/images/jetpacktocat.png" alt="celebrate" width=200 align=right>
 Here's a recap of all the tasks you've accomplished in your repository:
 
 - You've learned how to view and use dependency graph.
