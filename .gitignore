@@ -35,3 +35,8 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Sample payload files #
+#####################
+# These files are used for testing and should not be included in the repository
+.temp/**

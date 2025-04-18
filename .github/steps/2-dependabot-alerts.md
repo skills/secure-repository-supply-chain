@@ -4,7 +4,9 @@ _Nice work! :tada: You added and viewed a dependency using Dependency graph!_
 
 Given how many dependencies our repository uses, maintaining them needs to become an automated task. Keeping our code secure is a top priority, so the first thing we need to do is set up a way to be notified when a dependency we are using is vulnerable or malware. We can do this by enabling Dependabot alerts.
 
-**What are Dependabot alerts?**: Dependabot alerts tell you that your code depends on a package that is insecure. These Dependabot alerts reference the [GitHub Advisory Database](https://github.com/advisories), which contains a list of known security vulnerabilities and malware, grouped in two categories: **GitHub reviewed advisories** and **unreviewed advisories**.
+**What are Dependabot alerts?**
+
+Dependabot alerts tell you that your code depends on a package that is insecure. These Dependabot alerts reference the [GitHub Advisory Database](https://github.com/advisories), which contains a list of known security vulnerabilities and malware, grouped in two categories: **GitHub reviewed advisories** and **unreviewed advisories**.
 
 If your code depends on a package that has a security vulnerability, this can cause a range of problems for your project or the people who use it. You should upgrade to a secure version of the package as soon as possible. If your code uses malware, you need to replace the package with a secure alternative.
 
@@ -24,7 +26,7 @@ Let's enable Dependabot alerts on our repository!
 ### :keyboard: Activity 2.2: Enable Dependabot alerts
 
 1. Navigate to the **Settings** tab.
-1. Display the settings for **Code security and analysis**.
+1. Display the settings for **Code Security**.
 1. **Enable** Dependabot alerts.
 1. **Wait about 60 seconds for Dependabot to check for alerts.**
 1. Navigate to the **Security** tab.
@@ -42,5 +44,4 @@ Let's see how this would work by using Dependabot to create a pull request for o
 1. Click the **Review security update** button to display the pull request.
    - You can view the pull request and **Files changed** tab to review the update.
 1. Navigate back to the **Conversation** tab and merge the pull request.
-
-Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to display the next step.
+1. With the pull request merged, Mona should already be busy checking your work. Give her a moment and keep watch in the comments. You will see her respond with progress info and the next lesson.
