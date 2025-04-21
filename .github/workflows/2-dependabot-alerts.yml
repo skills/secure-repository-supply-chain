@@ -145,7 +145,7 @@ jobs:
         id: build-comment
         uses: skills/action-text-variables@v2
         with:
-          template-file: "${{ env.STEP_1_FILE }}"
+          template-file: "${{ env.STEP_3_FILE }}"
           template-vars: |
             full_repo_name: "${{ github.repository }}"
 
