@@ -26,8 +26,7 @@ jobs:
     name: Check step work
     runs-on: ubuntu-latest
     needs: find_exercise
-    if: |
-      !github.event.repository.is_template
+    if: !github.event.repository.is_template
     env:
       ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
 
@@ -51,7 +50,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # START: Check practical exercise
-      
+
       # Verify the PR added the dependabot changes.
       - name: Check package.json and package-lock.json for axios version other than 0.21.1
         id: check-axios-version
@@ -141,7 +140,7 @@ jobs:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
           ref: v0.3.0
-      
+
       - name: Build comment - add step content
         id: build-comment
         uses: skills/action-text-variables@v2
@@ -149,7 +148,7 @@ jobs:
           template-file: "${{ env.STEP_4_FILE }}"
           template-vars: |
             full_repo_name: "${{ github.repository }}"
-      
+
       - name: Create comment - add step content
         run: |
           gh issue comment "$ISSUE_URL" \

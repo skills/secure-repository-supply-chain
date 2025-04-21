@@ -26,6 +26,7 @@ jobs:
     name: Check step work
     runs-on: ubuntu-latest
     needs: find_exercise
+    if: !github.event.repository.is_template
     env:
       ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
 
