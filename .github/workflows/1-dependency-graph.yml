@@ -80,7 +80,7 @@ jobs:
         with:
           template-file: exercise-toolkit/markdown-templates/step-feedback/step-finished-prepare-next-step.md
           template-vars: |
-            next_step_number=2
+            next_step_number: "2"
 
       - name: Update comment - step finished
         run: |
