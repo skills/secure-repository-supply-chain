@@ -21,12 +21,15 @@ jobs:
   find_exercise:
     name: Find Exercise Issue
     uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.3.0
+    if: |
+      github.run_number != 1
 
   check_step_work:
     name: Check step work
     needs: find_exercise
     runs-on: ubuntu-latest
-    if: !github.event.repository.is_template
+    if: |
+      !github.event.repository.is_template
     env:
       ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
 
@@ -75,7 +78,8 @@ jobs:
     name: Post review content
     needs: [find_exercise, check_step_work]
     runs-on: ubuntu-latest
-    if: !github.event.repository.is_template
+    if: |
+      !github.event.repository.is_template
     env:
       ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
 
