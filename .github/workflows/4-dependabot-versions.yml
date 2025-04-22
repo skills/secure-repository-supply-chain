@@ -29,7 +29,7 @@ jobs:
     needs: find_exercise
     runs-on: ubuntu-latest
     if: |
-      github.event.repository.is_template == false
+      !github.event.repository.is_template
     env:
       ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
 
@@ -78,7 +78,8 @@ jobs:
     name: Post review content
     needs: [find_exercise, check_step_work]
     runs-on: ubuntu-latest
-    if: !github.event.repository.is_template
+    if: |
+      !github.event.repository.is_template
     env:
       ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
 
