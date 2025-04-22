@@ -8,7 +8,7 @@ on:
       - ".github/dependabot.yml"
 
 permissions:
-  contents: write
+  contents: read
   actions: write
   issues: write
 
