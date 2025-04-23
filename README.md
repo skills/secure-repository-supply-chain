@@ -1,8 +1,8 @@
 <header>
 
 <!--
-  <<< Author notes: Course header >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
+  <<< Author notes: Exercise header >>>
+  Include a 1280×640 image, Exercise title in sentence case, and a concise description in emphasis.
   In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
   Add your open source license, GitHub uses MIT license.
 -->
@@ -14,9 +14,9 @@ _Secure your supply chain, understand dependencies in your environment, know abo
 </header>
 
 <!--
-  <<< Author notes: Course start >>>
+  <<< Author notes: Exercise start >>>
   Include start button, a note about Actions minutes,
-  and tell the learner why they should take the course.
+  and tell the learner why they should take the exercise.
 -->
 
 ## Welcome
@@ -27,9 +27,9 @@ GitHub helps you secure your supply chain, from understanding the dependencies i
 - **What you'll learn**: How to view repository dependencies, view Dependabot alerts, and enable Dependabot security and version updates
 - **What you'll build**: Repository dependencies, Dependabot alerts, pull requests to fix dependencies and version updates
 - **Prerequisites**: None
-- **Timing**: This course can be completed in under an hour
+- **Timing**: This exercise can be completed in under an hour
 
-In this course, you will explore:
+In this exercise, you will explore:
 
 1. Dependency graph
 2. Dependency alerts
