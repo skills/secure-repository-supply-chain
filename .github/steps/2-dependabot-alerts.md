@@ -26,7 +26,7 @@ Let's enable Dependabot alerts on our repository!
 ### :keyboard: Activity 2.2: Enable Dependabot alerts
 
 1. Navigate to the **Settings** tab.
-1. Display the settings for **Code Security**.
+1. Display the settings for **Advanced Security**.
 1. **Enable** Dependabot alerts.
 1. **Wait about 60 seconds for Dependabot to check for alerts.**
 1. Navigate to the **Security** tab.
