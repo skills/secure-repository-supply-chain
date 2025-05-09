@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -24,16 +23,22 @@ namespace AttendeeSite.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public IActionResult Get([FromQuery] int days = 5)
         {
+            if (days < 1 || days > 10)
+            {
+                return BadRequest("Please specify 'days' between 1 and 10.");
+            }
+
             var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            var forecasts = Enumerable.Range(1, days).Select(index => new
             {
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = rng.Next(-20, 55),
                 Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            });
+
+            return Ok(forecasts);
         }
     }
 }
