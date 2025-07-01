@@ -112,7 +112,7 @@ jobs:
 
       - name: Build message - step finished
         id: build-message-step-finish
-        uses: skills/action-text-variables@v2
+        uses: skills/action-text-variables@v3
         with:
           template-file: exercise-toolkit/markdown-templates/step-feedback/step-finished-prepare-next-step.md
           template-vars: |
@@ -146,7 +146,7 @@ jobs:
 
       - name: Build comment - add step content
         id: build-comment
-        uses: skills/action-text-variables@v2
+        uses: skills/action-text-variables@v3
         with:
           template-file: "${{ env.STEP_4_FILE }}"
           template-vars: |
