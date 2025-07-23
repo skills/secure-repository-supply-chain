@@ -146,9 +146,9 @@ jobs:
         id: build-comment
         uses: skills/action-text-variables@v2
         with:
-          template-file: "${{ env.STEP_4_FILE }}"
+          template-file: ${{ env.STEP_4_FILE }}
           template-vars: |
-            full_repo_name: "${{ github.repository }}"
+            full_repo_name=${{ github.repository }}
       
       - name: Create comment - add step content
         run: |
