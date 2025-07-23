@@ -1,9 +1,9 @@
-name: Step 1, Review add dependency graph
+name: Step 0, Welcome
 
-# This step triggers after push to main.
-# This workflow updates from step 1 to step 2.
+# This step triggers after the learner creates a new repository from the template.
+# This workflow updates from step 0 to step 1.
 
-# This will run every time we push to main.
+# This will run every time we create push a commit to `main`.
 # Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 on:
   workflow_dispatch:
@@ -31,8 +31,8 @@ jobs:
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
 
-  on_add_dependency:
-    name: On Add dependency
+  on_start:
+    name: On start
     needs: get_current_step
 
     # We will only run this action when:
@@ -42,7 +42,7 @@ jobs:
     # Reference: https://docs.github.com/en/actions/learn-github-actions/expressions
     if: >-
       ${{ !github.event.repository.is_template
-          && needs.get_current_step.outputs.current_step == 1 }}
+          && needs.get_current_step.outputs.current_step == 0 }}
 
     # We'll run Ubuntu for performance instead of Mac or Windows.
     runs-on: ubuntu-latest
@@ -51,18 +51,13 @@ jobs:
       # We'll need to check out the repository so that we can edit the README.
       - name: Checkout
         uses: actions/checkout@v4
-
-      # Verify the learner added the file contents.
-      - name: Check package-lock.json
-        uses: skills/action-check-file@v1
         with:
-          file: "code/src/AttendeeSite/package-lock.json"
-          search: "1\\.14\\.1"
+          fetch-depth: 0 # Let's get all the branches.
 
-      # In README.md, switch step 1 for step 2.
-      - name: Update to step 2
+      # In README.md, switch step 0 for step 1.
+      - name: Update to step 1
         uses: skills/action-update-step@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          from_step: 1
-          to_step: 2
+          from_step: 0
+          to_step: 1

@@ -12,11 +12,16 @@ Let's see how this works!
 
 ### :keyboard: Activity 4.1: Enable and trigger Dependabot version updates
 
-1. Navigate to the **Settings** tab and select **Code Security**.
-1. Locate **Dependabot version updates** and click **Configure** to open a new file editor with pre-poplulated contents. The file is called `dependabot.yml`.
+1. Navigate to the **Settings** tab and select **Code security and analysis**.
+1. Locate "Dependabot version updates" and click **Configure** to open a new file editor with pre-poplulated contents. The file is called `dependabot.yml`.
 1. Notice that the file is prepopulated to update the GitHub actions in the repository, the `github-actions` package ecosystem.
-1. Edit your `dependabot.yml` configuration file to include another entry. It should look like:
-
+1. Copy the lines that define the GitHub actions updates and append them to the file.
+1. Edit your copy of the content:
+   - Change the `package-ecosystem` to `nuget`.
+   - Change the `directory` to `/code/`.
+   - Change the `interval` to `weekly`.
+   
+   The `dependabot.yml` file should now look like this.
    ```yaml
    version: 2
    updates:
@@ -28,14 +33,11 @@ Let's see how this works!
        directory: "/code/"
        schedule:
          interval: "weekly"
-   ```
-  
-   > 💡 **Tip:** While, you can edit and commit a file directly on github.com, you can also press the period key `.` to open a lightweight VS Code editor directly in browser.
-
+    ```
 1. Commit your changes directly to the `main` branch.
-1. With the configuration file updated, Mona should already be busy checking your work. Give her a moment and keep watch in the comments. You will see her respond with progress info and the next lesson.
 
 You have now configured Dependabot version updates to run and check for updates as follows:
-
 - Check once a month for updates to GitHub Actions and create pull requests to update any that are out of date.
 - Check once a week for updates to .NET packages and create pull requests to update any that are out of date. By default, this check runs on a Monday, to run the check on a different day, see [schedule.day](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#scheduleday).
+
+Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to display the next step.
