@@ -21,15 +21,12 @@ jobs:
   find_exercise:
     name: Find Exercise Issue
     uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.3.0
-    if: |
-      github.run_number != 1
 
   check_step_work:
     name: Check step work
     runs-on: ubuntu-latest
     needs: find_exercise
-    if: |
-      !github.event.repository.is_template
+    if: !github.event.repository.is_template
     env:
       ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
 
