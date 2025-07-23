@@ -21,6 +21,6 @@ Here's a recap of all the tasks you've accomplished in your repository:
 ### What's next?
 
 - Learn more about securing your supply chain by reading: [Securing your supply chain](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-supply-chain-security).
-- Check out other security focused [GitHub Skills exercises](https://skills.github.com/#code-security-and-analysis).
+- Check out other security focused [GitHub Skills exercises](https://learn.github.com/skills).
 - [Read the Get started with GitHub docs](https://docs.github.com/en/get-started).
 - To find projects to contribute to, check out [GitHub Explore](https://github.com/explore).
