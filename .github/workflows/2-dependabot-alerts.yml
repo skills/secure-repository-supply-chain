@@ -20,7 +20,7 @@ env:
 jobs:
   find_exercise:
     name: Find Exercise Issue
-    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.6.0
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.7.3
     if: |
       github.run_number != 1
 
@@ -31,144 +31,124 @@ jobs:
     if: |
       !github.event.repository.is_template
     env:
-      ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
+      ISSUE_REPOSITORY: ${{ github.repository }}
+      ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Get response templates
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.6.0
+          ref: v0.7.3
+
+      - name: Find last comment
+        id: find-last-comment
+        uses: peter-evans/find-comment@v4
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          direction: last
 
       - name: Update comment - checking work
-        run: |
-          gh issue comment "$ISSUE_URL" \
-            --body-file exercise-toolkit/markdown-templates/step-feedback/checking-work.md \
-            --edit-last
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          comment-id: ${{ steps.find-last-comment.outputs.comment-id }}
+          file: exercise-toolkit/markdown-templates/step-feedback/checking-work.md
+          edit-mode: replace
+
       # START: Check practical exercise
 
-      - name: Check package.json and package-lock.json for minimist version other than 1.2.5
-        id: check-user-work
-        run: |
-          # Checks to perform
-            checks='{
-              "package_json": {
-                "name": "package.json",
-                "passed": true,
-                "message": ""
-              },
-              "package_lock_json": {
-                "name": "package-lock.json",
-                "passed": true,
-                "message": ""
-              }
-            }'
+      - name: Check package.json for minimist version other than 1.2.5
+        id: check-package-json
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text-file: ${{ env.PACKAGE_JSON }}
+          keyphrase: '"minimist":[\t\n\r ]*"\^(?!1\.2\.[0-5])(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?"'
+          minimum-occurrences: 1
+          maximum-occurrences: 1
 
-          # Check for minimist version in package.json
-          file="$PACKAGE_JSON"
-          keyphrase="\"minimist\":[\ \\n\\r\\t]*\"\\^(?!1\\.2\\.[0-5])(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?\""
-          minimum_occurrences=1
-          found_occurrences=$(grep -o "$keyphrase" "$file" | wc -l)
-          if [ "$found_occurrences" -lt "$minimum_occurrences" ]; then
-            checks=$(echo $checks | jq '.package_json.passed = false')
-            checks=$(echo $checks | jq '.package_json.message = "Please update package.json to use a valid minimist version."')
-          fi
+      - name: Check package-lock.json for minimist version other than 1.2.5
+        id: check-package-lock-json
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v1
+        with:
+          text-file: ${{ env.PACKAGE_LOCK_JSON }}
+          keyphrase: 'minimist-(?!1\.2\.[0-5])(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?'
 
-          # Check for minimist version in package-lock.json
-          file="$PACKAGE_LOCK_JSON"
-          keyphrase="minimist-(?!1\\.2\\.[0-5])(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?"
-          minimum_occurrences=1
-          found_occurrences=$(grep -o "$keyphrase" "$file" | wc -l)
-          if [ "$found_occurrences" -lt "$minimum_occurrences" ]; then
-            checks=$(echo $checks | jq '.package_lock_json.passed = false')
-            checks=$(echo $checks | jq '.package_lock_json.message = "Please update package-lock.json to use a valid minimist version."')
-          fi
-
-          # Verify all checks passed
-          passed=$(echo $checks | jq '. | all(.passed?)')
-
-          # Flatten to an array for returning. Allows iteration during rendering.
-          results=$(echo $checks | jq 'to_entries | map({name: .key} + .value)')
-
-          # Save pass status to output
-          echo "passed=$passed" >> $GITHUB_OUTPUT
-
-          # Save results to output
-          echo 'results<<EOF' >> $GITHUB_OUTPUT
-          echo $results >> $GITHUB_OUTPUT
-          echo 'EOF' >> $GITHUB_OUTPUT
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update comment - step results
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          comment-id: ${{ steps.find-last-comment.outputs.comment-id }}
+          edit-mode: replace
+          file: exercise-toolkit/markdown-templates/step-feedback/step-results-table.md
+          vars: |
+            step_number: 2
+            results_table:
+              - description: "Checked for updated minimist version in package.json"
+                passed: ${{ steps.check-package-json.outcome == 'success' }}
+              - description: "Checked for updated minimist version in package-lock.json"
+                passed: ${{ steps.check-package-lock-json.outcome == 'success' }}
 
       # END: Check practical exercise
-  
-      - name: Build message - step finished
-        id: build-message-step-finish
-        uses: skills/action-text-variables@v2
-        with:
-          template-file: exercise-toolkit/markdown-templates/step-feedback/step-finished-prepare-next-step.md
-          template-vars: |
-            next_step_number: "3"
 
-      - name: Update comment - step finished
-        run: |
-          gh issue comment "$ISSUE_URL" \
-            --body "${{ steps.build-message-step-finish.outputs.updated-text }}" \
-            --edit-last
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+      - name: Fail job if not all checks passed
+        if: contains(steps.*.outcome, 'failure')
+        run: exit 1
+
   post_next_step_content:
     name: Post next step content
     needs: [find_exercise, check_step_work]
     runs-on: ubuntu-latest
     env:
-      ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
+      ISSUE_REPOSITORY: ${{ github.repository }}
+      ISSUE_NUMBER: ${{ needs.find_exercise.outputs.issue-number }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Get response templates
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.6.0
+          ref: v0.7.3
 
-      - name: Build comment - add step content
-        id: build-comment
-        uses: skills/action-text-variables@v2
+      - name: Create comment - step finished
+        uses: GrantBirki/comment@v2.1.1
         with:
-          template-file: "${{ env.STEP_3_FILE }}"
-          template-vars: |
-            full_repo_name: "${{ github.repository }}"
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          file: exercise-toolkit/markdown-templates/step-feedback/step-finished-prepare-next-step.md
+          vars: |
+            next_step_number: 3
 
       - name: Create comment - add step content
-        run: |
-          gh issue comment "$ISSUE_URL" \
-            --body "$ISSUE_BODY"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ISSUE_BODY: ${{ steps.build-comment.outputs.updated-text }}
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          file: ${{ env.STEP_3_FILE }}
 
       - name: Create comment - watching for progress
-        run: |
-          gh issue comment "$ISSUE_URL" \
-            --body-file exercise-toolkit/markdown-templates/step-feedback/watching-for-progress.md
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          file: exercise-toolkit/markdown-templates/step-feedback/watching-for-progress.md
 
       - name: Disable current workflow and enable next one
         run: |
-          gh workflow disable "Step 2"
+          gh workflow disable "${{github.workflow}}"
           gh workflow enable "Step 3"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
