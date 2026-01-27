@@ -1,72 +1,116 @@
-name: Step 4, Add Dependabot version updates
+name: Step 4 # Add Dependabot version updates
 
-# This step triggers after push to dependabot.yml.
-# This step updates from step 4 to X.
-
-# This will run every time we push to dependabot.yml.
-# Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
     paths:
       - ".github/dependabot.yml"
 
-# Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 permissions:
-  # Need `contents: read` to checkout the repository.
-  # Need `contents: write` to update the step metadata.
   contents: write
+  actions: write
+  issues: write
+
+env:
+  REVIEW_FILE: ".github/steps/x-review.md"
+  DEPENDABOT_FILE: ".github/dependabot.yml"
+  DEPENDABOT_KEYPHRASE: "nuget"
 
 jobs:
-  # Get the current step to only run the main job when the learner is on the same step.
-  get_current_step:
-    name: Check current step number
+  find_exercise:
+    name: Find Exercise Issue
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.6.0
+    if: |
+      github.run_number != 1
+
+  check_step_work:
+    name: Check step work
+    needs: find_exercise
     runs-on: ubuntu-latest
+    if: |
+      !github.event.repository.is_template
+    env:
+      ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - id: get_step
+
+      - name: Get response templates
+        uses: actions/checkout@v4
+        with:
+          repository: skills/exercise-toolkit
+          path: exercise-toolkit
+          ref: v0.6.0
+
+      # START: Check practical exercise
+
+      # Search for the comment about registration validation
+      - name: Check .github/dependabot.yml
         run: |
-          echo "current_step=$(cat ./.github/steps/-step.txt)" >> $GITHUB_OUTPUT
-    outputs:
-      current_step: ${{ steps.get_step.outputs.current_step }}
+          # File and expected phrase
+          file="$DEPENDABOT_FILE"
+          keyphrase="$DEPENDABOT_KEYPHRASE"
 
-  on_dependabot_versions:
-    name: On dependabot versions
-    needs: get_current_step
+          # Fail the workflow if the file content is missing
+          if ! grep -q "$keyphrase" "$file"; then
+            message="$keyphrase is not present in file $file. Please try again."
+            gh issue comment "$ISSUE_URL" \
+              --body "$message" \
+              --edit-last
+            exit 1
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    # We will only run this action when:
-    # 1. This repository isn't the template repository.
-    # 2. The step is currently 4.
-    # Reference: https://docs.github.com/en/actions/learn-github-actions/contexts
-    # Reference: https://docs.github.com/en/actions/learn-github-actions/expressions
-    if: >-
-      ${{ !github.event.repository.is_template
-          && needs.get_current_step.outputs.current_step == 4 }}
+      # END: Check practical exercise
 
-    # We'll run Ubuntu for performance instead of Mac or Windows.
+      - name: Update comment - step finished - final review next
+        run: |
+          gh issue comment "$ISSUE_URL" \
+            --body-file exercise-toolkit/markdown-templates/step-feedback/lesson-review.md \
+            --edit-last
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  post_review_content:
+    name: Post review content
+    needs: [find_exercise, check_step_work]
+    runs-on: ubuntu-latest
+    if: |
+      !github.event.repository.is_template
+    env:
+      ISSUE_URL: ${{ needs.find_exercise.outputs.issue-url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create comment - add review content
+        run: |
+          gh issue comment "$ISSUE_URL" \
+            --body-file ${{ env.REVIEW_FILE }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  finish_exercise:
+    name: Finish Exercise
+    needs: [find_exercise, post_review_content]
+    uses: skills/exercise-toolkit/.github/workflows/finish-exercise.yml@v0.6.0
+    with:
+      issue-url: ${{ needs.find_exercise.outputs.issue-url }}
+      exercise-title: "Secure your Repository Supply Chain"
+
+  disable_workflow:
+    name: Disable this workflow
+    needs: [find_exercise, post_review_content]
     runs-on: ubuntu-latest
 
     steps:
-      # We'll need to check out the repository so that we can edit the README.
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Let's get all the branches.
-
-      # Verify the learner added the file contents.
-      - name: Check dependabot.yml
-        uses: skills/action-check-file@v1
-        with:
-          file: ".github/dependabot.yml"
-          search: "nuget"
-
-      # In README.md, switch step 3 for step X.
-      - name: Update to step X
-        uses: skills/action-update-step@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          from_step: 4
-          to_step: X
+      - name: Disable current workflow
+        run: gh workflow disable "${{github.workflow}}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
