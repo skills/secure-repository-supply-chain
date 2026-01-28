@@ -18,7 +18,7 @@ Let's see how this works!
 ### :keyboard: Activity 4.1: Enable and trigger Dependabot version updates
 
 1. Navigate to the **Settings** tab and select **Advanced Security**.
-1. Locate **Dependabot version updates** and click **Configure** to open a new file editor with pre-poplulated contents. The file is called `dependabot.yml`.
+1. Locate **Dependabot version updates** and click **Configure** to open a new file editor with pre-populated contents. The file is called `dependabot.yml`.
 1. Notice that the file is prepopulated to update the GitHub actions in the repository, the `github-actions` package ecosystem.
 1. Edit your `dependabot.yml` configuration file to include another entry. It should look like:
 
