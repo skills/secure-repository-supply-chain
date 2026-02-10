@@ -18,7 +18,7 @@ jobs:
     if: |
       !github.event.repository.is_template
     name: Start Exercise
-    uses: skills/exercise-toolkit/.github/workflows/start-exercise.yml@v0.8.0
+    uses: skills/exercise-toolkit/.github/workflows/start-exercise.yml@v0.8.1
     with:
       exercise-title: "Secure your Repository's Supply Chain"
       intro-message: "Let's explore how to secure your repository's supply chain, understand dependencies in your environment, and find vulnerabilities in those dependencies and patch them. 💻✨"
@@ -34,6 +34,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          ref: main
 
       - name: Get response templates
         uses: actions/checkout@v6
