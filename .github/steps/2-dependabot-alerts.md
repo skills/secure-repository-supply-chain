@@ -15,11 +15,11 @@ Let's try this out with our newly added `follow-redirects` dependency!
 ### :keyboard: Activity 2.1: View security advisories in the GitHub Advisory Database
 
 1. Navigate to [GitHub Advisory Database](https://github.com/advisories).
-1. Type or paste `follow-redirects` into the advisory search box.
+1. Type or paste `affects:follow-redirects` into the advisory search box.
 1. Click on any of the advisories that were found to see more information.
 1. You'll see the packages, impact, patches, workaround, and references for the advisory.
 
-Notice the long list of advisories for our dependency! This can look scary but it's actually a good thing. It means that our dependency is actively being maintained and patches are being pushed to remove the vulnerability. If we had Dependabot alerts enabled, we could receive alerts when we need to update a dependency and act promptly to secure them.
+Notice the list of advisories affecting our dependency! Each advisory provides details about the vulnerability and patched versions. If we had Dependabot alerts enabled, we could receive alerts when we need to update a dependency and act promptly to secure it.
 
 Let's enable Dependabot alerts on our repository!
 
