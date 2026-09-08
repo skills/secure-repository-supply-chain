@@ -22,7 +22,7 @@ GitHub offers a range of features to help you understand the dependencies in you
 
 1. Navigate to the **Settings** tab.
 1. In the "Security and quality" section, click **Advanced Security**.
-1. Next to "Dependency Graph", click **Enable**
+1. Next to "Dependency Graph", click **Enable**.
 
 ### :keyboard: Activity 1.2: Add a new dependency and view your dependency graph
 
