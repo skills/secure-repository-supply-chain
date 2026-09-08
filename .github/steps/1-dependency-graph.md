@@ -16,16 +16,13 @@ GitHub offers a range of features to help you understand the dependencies in you
 - Dependencies, the ecosystems and packages it depends on
 - Dependents, the repositories and packages that depend on it
 
-### :keyboard: Activity 1.1: Verify that dependency graph is enabled
+### :keyboard: Activity 1.1: Enable dependency graph
 
 **We recommend opening another browser tab to work through the following activities so you can keep these instructions open for reference.**
 
->[!NOTE]
-> Dependency graph is enabled by default for all new public repositories.
-
 1. Navigate to the **Settings** tab.
-1. Click **Advanced Security**.
-1. Verify **Dependency Graph** is **Enabled**
+1. In the "Security and quality" section, click **Advanced Security**.
+2. Next to "Dependency Graph", click **Enable**
 
 ### :keyboard: Activity 1.2: Add a new dependency and view your dependency graph
 
